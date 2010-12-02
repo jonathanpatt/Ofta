@@ -16,11 +16,9 @@ It's necessary that you use `require_once()`, especially if you're using more th
 
 # Usage
 
-<<<<<<< HEAD
+
 A basic overview of the major features of each class will be outlined here. If Ofta grows past a certain point, more detailed explanations will be available on the wiki.
 
-=======
->>>>>>> cc93e952f750d4142701b9677003b23a976065f1
 ## OftaTagBuilder
 
 A simple HTML tag builder that can be used to programmatically build and return HTML tags without mixing HTML directly in with your PHP.
@@ -53,8 +51,5 @@ For more specialized circumstances, you may want to build start and end tags sep
 
 	$t->startTag('div', array('class' => 'box')).'Who would want to do this?'.$t->endTag('div');
 	
-<<<<<<< HEAD
+	
 	Returns: <div class="box">Who would want to do this?</div>
-=======
-	Returns: <form action="process.php" method="post"></form>
->>>>>>> cc93e952f750d4142701b9677003b23a976065f1
