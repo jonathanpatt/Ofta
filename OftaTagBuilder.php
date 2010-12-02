@@ -11,7 +11,7 @@
 			$this->closingSlash	= $closingSlash;
 		}
 		
-		public function startTag($name, $attributes, $isEmpty = false) {
+		public function startTag($name, $attributes = array(), $isEmpty = false) {
 			/* Add Tag Name */
 			$output  = '<'.$name;
 			
@@ -20,33 +20,26 @@
 				$output .= ' '.$key.'="'.$value.'"';
 			}
 			
-			/* Close Start Tag */
-			if (!$isEmpty) {
-				$output .= '>';
-			} else {
-				/* Add Closing Slash if It's Set */
-				if ($this->closingSlash) {
-					$output .= ' /';
-				}
-				
-				$output .= '>';
+			/* Add Closing Slash if It's Set */
+			if ($isEmpty && $this->closingSlash) {
+				$output .= ' /';
 			}
 			
-			echo $output;
+			$output .= '>';
+			
+			return $output;
 		}
 		
 		public function endTag($name) {
-			echo '</'.$name.'>';
+			return '</'.$name.'>';
 		}
 		
-		public function tag($name, $attributes, $content = null) {
-			if ($content) {
-				$this->startTag($name, $attributes);
-				echo $content;
-				$this->endTag($name);
-			} else {
-				$this->startTag($name, $attributes, true);
-			}
+		public function tag($name, $content, $attributes = array()) {
+			return $this->startTag($name, $attributes).$content.$this->endTag($name);
+		}
+		
+		public function emptyTag($name, $attributes = array()) {
+			return $this->startTag($name, $attributes, true);
 		}
 	}
 ?>
