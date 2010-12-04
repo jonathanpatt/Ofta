@@ -51,5 +51,4 @@ For more specialized circumstances, you may want to build start and end tags sep
 
 	$t->startTag('div', array('class' => 'box')).'Who would want to do this?'.$t->endTag('div');
 	
-	
 	Returns: <div class="box">Who would want to do this?</div>
