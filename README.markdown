@@ -53,3 +53,25 @@ For more specialized circumstances, you may want to build start and end tags sep
 	
 	
 	Returns: <div class="box">Who would want to do this?</div>
+
+## OftaTemplate
+
+A very simple, but very versatile template class.
+
+Template variable tags are strings surrounded by curly brackets. Case does not matter, but uppercase is preferable as it makes them more visible.
+
+	<title>{TITLE}</title>
+
+	$frame = new OftaTemplate('/path/to/template');
+	$frame->set('title', 'Templates are cool!);
+	$frame->publish();
+	
+	Outputs: <title>Templates are cool!</title>
+
+To use templates within templates, use the `template()` method to return its final value to a variable:
+
+	$frame = new OftaTemplate('/path/to/awesome/template');
+	$content = new OftaTemplate('/path/to/content');
+	$content->set('date', date('M d, Y'));
+	$frame->set('content', $content->template());
+	$frame->publish();
