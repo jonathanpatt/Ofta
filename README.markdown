@@ -19,6 +19,30 @@ It's necessary that you use `require_once()`, especially if you're using more th
 
 A basic overview of the major features of each class will be outlined here. If Ofta grows past a certain point, more detailed explanations will be available on the wiki.
 
+## OftaNotificationCenter
+
+A class to hold notification messages of some sort for eventual output.
+
+	$messages = new OftaNotificationCenter();
+	$messages->add('Success!');
+	$messages->format();
+	
+	Returns: <li>Success!</li>
+
+To specify message types, you can optionally provide a type parameter:
+
+	$messages->add('Invalid username.', 'error');
+	$messages->add('Free pie!', 'special-offers');
+	$messages->format('error');
+	
+	Returns: <li>Invalid username.</i>
+
+You can also override the default format type with optional prefix and suffix parameters:
+
+	$messages->format('all', '<p>', '</p>');
+	
+	Returns: <p>Message goes here!</p>
+
 ## OftaTagBuilder
 
 A simple HTML tag builder that can be used to programmatically build and return HTML tags without mixing HTML directly in with your PHP.
