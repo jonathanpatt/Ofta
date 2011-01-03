@@ -39,7 +39,8 @@
         /* Addresses */
         
         public function email($name, $displayName = null) {
-            if (!preg_match("/^[\w!#$%&\'*+\/=?^`{|}~.-]+@(?:[a-z\d][a-z\d-]*(?:\.[a-z\d][a-z\d-]*)?)+\.(?:[a-z][a-z\d-]+)$/iD", $this->data[$name])) {
+            if (trim($this->data[$name]) != '' && 
+                !preg_match("/^[\w!#$%&\'*+\/=?^`{|}~.-]+@(?:[a-z\d][a-z\d-]*(?:\.[a-z\d][a-z\d-]*)?)+\.(?:[a-z][a-z\d-]+)$/iD", $this->data[$name])) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> is not a valid email address.');
                 return false;
         	}
@@ -47,7 +48,7 @@
         }
         
         public function ip($name, $displayName = null) {
-            if (!filter_var($this->data[$name], FILTER_VALIDATE_IP)) {
+            if (trim($this->data[$name]) != '' && !filter_var($this->data[$name], FILTER_VALIDATE_IP)) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> is not a valid IP address.');
                 return false;
         	}
@@ -55,15 +56,16 @@
         }
         
         public function phone($name, $displayName = null) {
-            if (!preg_match("/^[\(]?(\d{0,3})[\)]?[\s]?[\-]?(\d{3})[\s]?[\-]?(\d{4})[\s]?[x]?(\d*)$/", $this->data[$name], $matches)) {
+            if (trim($this->data[$name]) != '' &&
+                !preg_match("/^[\(]?(\d{0,3})[\)]?[\s]?[\-]?(\d{3})[\s]?[\-]?(\d{4})[\s]?[x]?(\d*)$/", $this->data[$name], $matches)) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> is not a valid telephone number.');
                 return false;
         	}
-        	return true;
+        	return $matches;
         }
         
         public function url($name, $displayName = null) {
-            if (!filter_var($this->data[$name], FILTER_VALIDATE_URL)) {
+            if (trim($this->data[$name]) != '' && !filter_var($this->data[$name], FILTER_VALIDATE_URL)) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> is not a valid URL.');
                 return false;
         	}
@@ -74,7 +76,7 @@
         /* Number Types */
         
         public function integer($name, $displayName = null) {
-            if (!filter_var($this->data[$name], FILTER_VALIDATE_INT)) {
+            if (trim($this->data[$name]) != '' && !filter_var($this->data[$name], FILTER_VALIDATE_INT)) {
                 if (!($this->data[$name] == "0")) {
                     $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> must be an integer.');
                     return false;
@@ -84,7 +86,7 @@
         }
         
         public function float($name, $displayName = null) {
-            if (!filter_var($this->data[$name], FILTER_VALIDATE_FLOAT)) {
+            if (trim($this->data[$name]) != '' && !filter_var($this->data[$name], FILTER_VALIDATE_FLOAT)) {
                 if (!($this->data[$name] == "0")) {
                     $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> must be a decimal number.');
                     return false;
@@ -97,7 +99,7 @@
         /* Number Conditions */
         
         public function lessThan($name, $number, $displayName = null) {
-            if (!($this->data[$name] < $number)) {
+            if (trim($this->data[$name]) != '' && !($this->data[$name] < $number)) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> must be less than <b>'.$number.'</b>.');
                 return false;
             }
@@ -105,7 +107,7 @@
         }
         
         public function lessThanOrEqualTo($name, $number, $displayName = null) {
-            if (!($this->data[$name] <= $number)) {
+            if (trim($this->data[$name]) != '' && !($this->data[$name] <= $number)) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> must be less than or equal to <b>'.$number.'</b>.');
                 return false;
             }
@@ -113,7 +115,7 @@
         }
         
         public function equalTo($name, $number, $displayName = null) {
-            if (!($this->data[$name] == $number)) {
+            if (trim($this->data[$name]) != '' && !($this->data[$name] == $number)) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> must be equal to <b>'.$number.'</b>.');
                 return false;
             }
@@ -121,7 +123,7 @@
         }
         
         public function greaterThan($name, $number, $displayName = null) {
-            if (!($this->data[$name] > $number)) {
+            if (trim($this->data[$name]) != '' && !($this->data[$name] > $number)) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> must be greater than <b>'.$number.'</b>.');
                 return false;
             }
@@ -129,7 +131,7 @@
         }
         
         public function greaterThanOrEqualTo($name, $number, $displayName = null) {
-            if (!($this->data[$name] >= $number)) {
+            if (trim($this->data[$name]) != '' && !($this->data[$name] >= $number)) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> must be greater than or equal to <b>'.$number.'</b>.');
                 return false;
             }
@@ -167,7 +169,7 @@
         /* Length */
         
         public function minLength($name, $minLength, $displayName = null) {
-            if (strlen($this->data[$name]) < $minLength) {
+            if (trim($this->data[$name]) != '' && strlen($this->data[$name]) < $minLength) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> must be '.$minLength.' characters or longer.');
                 return false;
             }
@@ -175,7 +177,7 @@
         }
         
         public function maxLength($name, $maxLength, $displayName = null) {
-            if (strlen($this->data[$name]) > $maxLength) {
+            if (trim($this->data[$name]) != '' && strlen($this->data[$name]) > $maxLength) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> must be '.$maxLength.' characters or shorter.');
                 return false;
             }
