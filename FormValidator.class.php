@@ -1,7 +1,7 @@
 <?php
-require_once 'OftaErrorCenter.php';
+require_once 'ErrorCenter.class.php';
 
-class OftaFormValidator
+class FormValidator
 {
     protected $data;
     protected $errors;

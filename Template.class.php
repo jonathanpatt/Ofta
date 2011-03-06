@@ -1,5 +1,5 @@
 <?php
-class OftaTemplate
+class Template
 {
     protected $template;
     

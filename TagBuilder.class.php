@@ -1,5 +1,5 @@
 <?php
-class OftaTagBuilder
+class TagBuilder
 {
     protected $closingSlash;
     

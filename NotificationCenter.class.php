@@ -1,5 +1,5 @@
 <?php
-class OftaNotificationCenter
+class NotificationCenter
 {
     protected $messages = array();
     
