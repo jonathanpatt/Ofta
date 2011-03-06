@@ -15,7 +15,11 @@ class TagBuilder
         
         /* Loop Through and Add Tag Attributes */
         foreach ($attributes as $key => $value) {
-            $output .= ' ' . $key . '="' . $value . '"';
+            if (is_string($key)) {
+                $output .= ' ' . $key . '="' . $value . '"';
+            } else {
+                $output .= ' ' . $value;
+            }
         }
         
         /* Add Closing Slash if It's Set */
