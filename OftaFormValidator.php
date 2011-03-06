@@ -43,16 +43,16 @@
                 !preg_match("/^[\w!#$%&\'*+\/=?^`{|}~.-]+@(?:[a-z\d][a-z\d-]*(?:\.[a-z\d][a-z\d-]*)?)+\.(?:[a-z][a-z\d-]+)$/iD", $this->data[$name])) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> is not a valid email address.');
                 return false;
-        	}
-        	return true;
+            }
+            return true;
         }
         
         public function ip($name, $displayName = null) {
             if (trim($this->data[$name]) != '' && !filter_var($this->data[$name], FILTER_VALIDATE_IP)) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> is not a valid IP address.');
                 return false;
-        	}
-        	return true;
+            }
+            return true;
         }
         
         public function phone($name, $displayName = null) {
@@ -60,16 +60,16 @@
                 !preg_match("/^[\(]?(\d{0,3})[\)]?[\s]?[\-]?(\d{3})[\s]?[\-]?(\d{4})[\s]?[x]?(\d*)$/", $this->data[$name], $matches)) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> is not a valid telephone number.');
                 return false;
-        	}
-        	return $matches;
+            }
+            return $matches;
         }
         
         public function url($name, $displayName = null) {
             if (trim($this->data[$name]) != '' && !filter_var($this->data[$name], FILTER_VALIDATE_URL)) {
                 $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> is not a valid URL.');
                 return false;
-        	}
-        	return true;
+            }
+            return true;
         }
         
         
@@ -81,8 +81,8 @@
                     $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> must be an integer.');
                     return false;
                 }
-        	}
-        	return true;
+            }
+            return true;
         }
         
         public function float($name, $displayName = null) {
@@ -91,8 +91,8 @@
                     $this->errors->add('<b>'.$this->displayName($name, $displayName).'</b> must be a decimal number.');
                     return false;
                 }
-        	}
-        	return true;
+            }
+            return true;
         }
         
         
