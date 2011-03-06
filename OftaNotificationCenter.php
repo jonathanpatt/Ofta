@@ -35,7 +35,7 @@ class OftaNotificationCenter
         $formattedMessages = '';
         
         foreach ($this->messages($type) as $message) {
-            $formattedMessages .= $prefix.$message.$suffix;
+            $formattedMessages .= $prefix . $message . $suffix;
         }
         
         return $formattedMessages;

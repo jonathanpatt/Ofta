@@ -11,11 +11,11 @@ class OftaTagBuilder
     public function startTag($name, $attributes = array(), $isEmpty = false)
     {
         /* Add Tag Name */
-        $output  = '<'.$name;
+        $output  = '<' . $name;
         
         /* Loop Through and Add Tag Attributes */
         foreach ($attributes as $key => $value) {
-            $output .= ' '.$key.'="'.$value.'"';
+            $output .= ' ' . $key . '="' . $value . '"';
         }
         
         /* Add Closing Slash if It's Set */
@@ -30,12 +30,13 @@ class OftaTagBuilder
     
     public function endTag($name)
     {
-        return '</'.$name.'>';
+        return '</' . $name . '>';
     }
     
     public function tag($name, $content, $attributes = array())
     {
-        return $this->startTag($name, $attributes).$content.$this->endTag($name);
+        return $this->startTag($name, $attributes) .
+            $content . $this->endTag($name);
     }
     
     public function emptyTag($name, $attributes = array())

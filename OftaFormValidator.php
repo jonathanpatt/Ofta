@@ -155,7 +155,7 @@ class OftaFormValidator
             $this->errors->add(
                 '<b>' .
                 $this->displayName($name, $displayName) .
-                '</b> must be less than <b>'.$number.'</b>.'
+                '</b> must be less than <b>' . $number . '</b>.'
             );
             return false;
         }
@@ -170,7 +170,7 @@ class OftaFormValidator
             $this->errors->add(
                 '<b>' .
                 $this->displayName($name, $displayName) .
-                '</b> must be less than or equal to <b>'.$number.'</b>.'
+                '</b> must be less than or equal to <b>' . $number . '</b>.'
             );
             return false;
         }
@@ -185,7 +185,7 @@ class OftaFormValidator
             $this->errors->add(
                 '<b>' .
                 $this->displayName($name, $displayName) .
-                '</b> must be equal to <b>'.$number.'</b>.'
+                '</b> must be equal to <b>' . $number . '</b>.'
             );
             return false;
         }
@@ -200,7 +200,7 @@ class OftaFormValidator
             $this->errors->add(
                 '<b>' .
                 $this->displayName($name, $displayName) .
-                '</b> must be greater than <b>'.$number.'</b>.'
+                '</b> must be greater than <b>' . $number . '</b>.'
             );
             return false;
         }
@@ -215,7 +215,8 @@ class OftaFormValidator
             $this->errors->add(
                 '<b>' .
                 $this->displayName($name, $displayName) .
-                '</b> must be greater than or equal to <b>'.$number.'</b>.'
+                '</b> must be greater than or equal to <b>' .
+                $number . '</b>.'
             );
             return false;
         }
@@ -275,7 +276,7 @@ class OftaFormValidator
             $this->errors->add(
                 '<b>' .
                 $this->displayName($name, $displayName) .
-                '</b> must be '.$minLength.' characters or longer.'
+                '</b> must be ' . $minLength . ' characters or longer.'
             );
             return false;
         }
@@ -290,7 +291,7 @@ class OftaFormValidator
             $this->errors->add(
                 '<b>' .
                 $this->displayName($name, $displayName) .
-                '</b> must be '.$maxLength.' characters or shorter.'
+                '</b> must be ' . $maxLength . ' characters or shorter.'
             );
             return false;
         }
@@ -302,7 +303,7 @@ class OftaFormValidator
     
     public function confirmation($name, $displayName = null)
     {
-        if ($this->data[$name] != $this->data[$name.'_confirmation']) {
+        if ($this->data[$name] != $this->data[$name . '_confirmation']) {
             $this->errors->add(
                 '<b>' .
                 $this->displayName($name, $displayName) .

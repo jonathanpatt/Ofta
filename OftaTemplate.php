@@ -11,7 +11,7 @@ class OftaTemplate
     public function set($tag, $value)
     {
         $this->template = str_ireplace(
-            '{'.$tag.'}',
+            '{' . $tag . '}',
             $value,
             $this->template
         );
