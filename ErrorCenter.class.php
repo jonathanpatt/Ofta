@@ -1,7 +1,7 @@
 <?php
-require_once 'OftaNotificationCenter.php';
+require_once 'NotificationCenter.class.php';
 
-class OftaErrorCenter extends OftaNotificationCenter
+class ErrorCenter extends NotificationCenter
 {
     function errorPage($path, $type = null,
         $prefix = '<li>', $suffix = "</li>\n"

@@ -1,7 +1,7 @@
 <?php
-require_once 'OftaErrorCenter.php';
+require_once 'ErrorCenter.class.php';
 
-class OftaFormValidator
+class FormValidator
 {
     protected $data;
     protected $errors;
@@ -14,11 +14,11 @@ class OftaFormValidator
             $this->data = $_GET;
         } else {
             trigger_error(
-                'OftaFormValidator only accepts POST and GET.', E_USER_ERROR
+                'FormValidator only accepts POST and GET.', E_USER_ERROR
             );
         }
         
-        $this->errors = new OftaErrorCenter();
+        $this->errors = new ErrorCenter();
     }
     
     protected function displayName($name, $displayName = null)
